@@ -1,0 +1,15 @@
+<div>{{ alerteListe }}</div>
+<h2>{{ titre }}</h2>
+<input [(ngModel)]="titreSeries" name="filtreSeries" placeholder="Filtrer par titre ou auteur" >
+<article *ngFor="let s of (lSeries.listeSeries | filtretitre:titreSeries); let i = index">
+  <img [src]="s.cover" />
+  <div>
+      <h3>{{s.title}}</h3>
+      <p>Auteur : {{ s.author }}</p>
+      <p>Date de publication : {{ s.publishedDate }}</p>
+      <p>ISBN13 : {{ s.ISBN13 }}</p>
+      <a href [routerLink]="['/editeurs', s.publisher]" >Editeur : {{ lSeries.listeEditeurs[s.publisher].name }}</a>
+      <br/>
+      <a href [routerLink]="['/series', i]">Editer cette série</a>
+  </div>
+</article>
